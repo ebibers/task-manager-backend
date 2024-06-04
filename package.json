@@ -1,16 +1,19 @@
 {
   "name": "task-manager-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
+  "type": "module",
   "scripts": {
-    "start": "node dist/server.js",
-    "build": "tsc"
+    "start": "nodemon dist/server.js",
+    "build": "npx tsc",
+    "dev": "npx tsc -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },
   "devDependencies": {
