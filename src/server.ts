@@ -1,10 +1,14 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { routes as taskRoutes } from './routes/task.routes.js';
 
 const app: Express = express();
 dotenv.config();
+
+app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 8000;
 const DB_USER = process.env.DB_USER;
