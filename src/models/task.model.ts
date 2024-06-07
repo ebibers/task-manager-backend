@@ -50,6 +50,6 @@ export async function updateTask(id: string, task: TaskInteface) {
     taskData.createdOn = task.createdOn;
     taskData.status = task.status;
 
-    taskData.save();
+    await taskData.save();
   }
 }
