@@ -33,9 +33,9 @@ export async function createTask(req: Request, res: Response) {
   if (task) {
     await storeTask(task);
     
-    res.send(true);
+    res.send(task);
   } else {
-    res.send(false);
+    res.sendStatus(404);
   }
 }
 
@@ -84,7 +84,7 @@ export async function editTask(req: Request, res: Response) {
   if (mongoose.Types.ObjectId.isValid(id) && task) {
     await updateTask(id, task);
     
-    res.send(true);
+    res.send(task);
   } else {
     res.sendStatus(404);
   }

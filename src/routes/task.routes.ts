@@ -5,12 +5,12 @@ export const routes = Router();
 
 routes.get('/populate', populateDummyData);
 
-routes.get('/get-all-tasks', getAllTasks);
+routes.get('/', getAllTasks);
 
-routes.post('/create-task', createTask);
+routes.post('/', createTask);
 
-routes.delete('/delete-task/:id', deleteTask);
+routes.delete('/:id', deleteTask);
 
-routes.get('/get-task/:id', getTask);
+routes.get('/:id', getTask);
 
-routes.patch('/update-task/:id', editTask);
+routes.patch('/:id', editTask);
