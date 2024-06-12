@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Johnson",
+    "username": "jjon",
+    "password": "safepass123"
+  },
+  {
+    "firstName": "Patrick",
+    "lastName": "Bateman",
+    "username": "americanpsycho",
+    "password": "password321"
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Jordan",
+    "username": "6rings",
+    "password": "goatgoat23"
+  },
+  {
+    "firstName": "Sponge",
+    "lastName": "Bob",
+    "username": "cpatty",
+    "password": "garry1234"
+  },
+  {
+    "firstName": "Fake",
+    "lastName": "Person",
+    "username": "fakeusername",
+    "password": "fakepassword22"
+  }
+]
