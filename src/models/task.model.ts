@@ -5,7 +5,8 @@ export interface TaskInteface {
   description: String,
   type: String,
   createdOn: String | Date,
-  status: Boolean
+  status: Boolean,
+  assignedTo: String
 }
 
 const taskSchema = new mongoose.Schema<TaskInteface>({
@@ -13,7 +14,8 @@ const taskSchema = new mongoose.Schema<TaskInteface>({
   description: String,
   type: String,
   createdOn: Date,
-  status: Boolean
+  status: Boolean,
+  assignedTo: String
 });
 
 const Task = mongoose.model('Task', taskSchema);
@@ -24,7 +26,8 @@ export async function storeTask(task: TaskInteface) {
     description: task.description,
     type: task.type,
     createdOn: task.createdOn,
-    status: task.status
+    status: task.status,
+    assignedTo: task.assignedTo
   });
 }
 
@@ -49,6 +52,7 @@ export async function updateTask(id: string, task: TaskInteface) {
     taskData.type = task.type;
     taskData.createdOn = task.createdOn;
     taskData.status = task.status;
+    taskData.assignedTo = task.assignedTo;
 
     await taskData.save();
   }

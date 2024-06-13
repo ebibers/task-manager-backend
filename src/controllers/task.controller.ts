@@ -21,7 +21,8 @@ export async function getAllTasks(req: Request, res: Response) {
     description: task.description,
     type: task.type,
     createdOn: task.createdOn,
-    status: task.status
+    status: task.status,
+    assignedTo: task.assignedTo
   }));
 
   res.send(tasks);
@@ -64,7 +65,8 @@ export async function getTask(req: Request, res: Response) {
         description: taskData.description,
         type: taskData.type,
         createdOn: taskData.createdOn,
-        status: taskData.status
+        status: taskData.status,
+        assignedTo: taskData.assignedTo
       }
   
       res.send(task);

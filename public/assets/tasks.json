@@ -4,41 +4,47 @@
     "description": "Do all the dishes that are one the counter in the kitchen",
     "type": "Urgent",
     "createdOn": "2024-05-04T18:25:43.511Z",
-    "status": false
+    "status": false,
+    "assignedTo": "UNASSIGNED"
   },
   {
     "title": "Take out the trash",
     "description": "Take out all the trash by the front door",
     "type": "Can Wait",
     "createdOn": "2024-04-23T18:25:43.511Z",
-    "status": true
+    "status": true,
+    "assignedTo": "UNASSIGNED"
   },
   {
     "title": "Do your homework",
     "description": "Do all your school asignments",
     "type": "Urgent",
     "createdOn": "2024-05-01T18:25:43.511Z",
-    "status": false
+    "status": false,
+    "assignedTo": "UNASSIGNED"
   },
   {
     "title": "Go to the gym",
     "description": "Go to the gym to workout",
     "type": "Can Wait",
     "createdOn": "2024-05-20T18:25:43.511Z",
-    "status": false
+    "status": false,
+    "assignedTo": "UNASSIGNED"
   },
   {
     "title": "Fix your broken window",
     "description": "Buy a new window and replace the old, broken one",
     "type": "Urgent",
     "createdOn": "2024-05-26T18:25:43.511Z",
-    "status": false
+    "status": false,
+    "assignedTo": "UNASSIGNED"
   },
   {
     "title": "Replace the light bulb",
     "description": "The light bulb is about to stop working. Replace it.",
     "type": "Can Wait",
     "createdOn": "2024-05-19T18:25:43.511Z",
-    "status": true
+    "status": true,
+    "assignedTo": "UNASSIGNED"
   }
 ]
