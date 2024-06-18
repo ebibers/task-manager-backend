@@ -1,23 +1,23 @@
 import mongoose from "mongoose";
 import { genSalt, hash } from "bcrypt-ts";
 
-export interface UserInteface {
+export interface UserInterface {
   firstName: string,
   lastName: string,
   username: string,
   password: string
 }
 
-const userSchema = new mongoose.Schema<UserInteface>({
+const userSchema = new mongoose.Schema<UserInterface>({
   firstName: String,
   lastName: String,
-  username: String,
+  username: {type: String, unique: true},
   password: String
 });
 
 const User = mongoose.model('User', userSchema);
 
-export async function storeUser(user: UserInteface) {
+export async function storeUser(user: UserInterface) {
   const salt = await genSalt(10);
 
   const hashedPassword = await hash(user.password, salt);
@@ -36,4 +36,8 @@ export async function getAll() {
 
 export async function getById(id: string) {
   return await User.findById(id);
+}
+
+export async function getByUsername(username: string) {
+  return await User.findOne({username: username});
 }

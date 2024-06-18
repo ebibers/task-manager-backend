@@ -1,16 +1,17 @@
 import { Router } from "express";
 import { populateDummyData, getAllTasks, createTask, deleteTask, getTask, editTask } from "../controllers/task.controller.js";
+import { authenticateToken } from "../middleware/auth.middleware.js";
 
 export const routes = Router();
 
 routes.get('/populate', populateDummyData);
 
-routes.get('/', getAllTasks);
+routes.get('/', authenticateToken, getAllTasks);
 
-routes.post('/', createTask);
+routes.post('/', authenticateToken, createTask);
 
-routes.delete('/:id', deleteTask);
+routes.delete('/:id', authenticateToken, deleteTask);
 
-routes.get('/:id', getTask);
+routes.get('/:id', authenticateToken, getTask);
 
-routes.patch('/:id', editTask);
+routes.patch('/:id', authenticateToken, editTask);
