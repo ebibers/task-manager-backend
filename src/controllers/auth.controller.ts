@@ -30,7 +30,7 @@ export async function login(req: Request, res: Response) {
 
           const refreshToken = jwt.sign(user, REFRESH_TOKEN_SECRET);
 
-          storeToken(refreshToken);
+          await storeToken(refreshToken);
 
           res.json({ accessToken: accessToken, refreshToken: refreshToken });
         }
