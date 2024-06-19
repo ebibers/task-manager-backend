@@ -32,7 +32,7 @@ export async function login(req: Request, res: Response) {
 
           await storeToken(refreshToken);
 
-          res.json({ accessToken: accessToken, refreshToken: refreshToken });
+          res.json({ user: user, accessToken: accessToken, refreshToken: refreshToken });
         }
       } else {
         res.status(400).send();
