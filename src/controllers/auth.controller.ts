@@ -11,6 +11,20 @@ const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
+export function getAuthUser(req: Request, res: Response) {
+  const userData = req.user;
+
+  const user = {
+    id: userData.id,
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    username: userData.username,
+    password: userData.password,
+  } 
+
+  res.send(user);
+}
+
 export async function login(req: Request, res: Response) {
   const userData = await getByUsername(req.body.username);
 
@@ -48,7 +62,7 @@ export async function login(req: Request, res: Response) {
 export async function logout(req: Request, res: Response) {
   await deleteToken(req.body.token);
 
-  res.sendStatus(204);
+  res.status(204).send(req.body.token);
 }
 
 export async function refreshToken(req: Request, res: Response) {
@@ -61,12 +75,12 @@ export async function refreshToken(req: Request, res: Response) {
   const refreshToken = await findToken(refreshTokenData);
 
   if (!refreshToken) {
-    return res.sendStatus(403);
+    return res.sendStatus(401);
   }
 
   if (REFRESH_TOKEN_SECRET) {
     jwt.verify(refreshToken.token, REFRESH_TOKEN_SECRET, (err, user) => {
-      if (err) return res.sendStatus(403);
+      if (err) return res.sendStatus(401);
 
       const accessToken = generateAccessToken(user);
 
