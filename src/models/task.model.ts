@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface TaskInteface {
+export interface TaskInterface {
   title: String,
   description: String,
   type: String,
@@ -9,7 +9,7 @@ export interface TaskInteface {
   assignedTo: String
 }
 
-const taskSchema = new mongoose.Schema<TaskInteface>({
+const taskSchema = new mongoose.Schema<TaskInterface>({
   title: String,
   description: String,
   type: String,
@@ -20,7 +20,7 @@ const taskSchema = new mongoose.Schema<TaskInteface>({
 
 const Task = mongoose.model('Task', taskSchema);
 
-export async function storeTask(task: TaskInteface) {
+export async function storeTask(task: TaskInterface) {
   await Task.create({
     title: task.title,
     description: task.description,
@@ -43,7 +43,7 @@ export async function getById(id: string) {
   return await Task.findById(id);
 }
 
-export async function updateTask(id: string, task: TaskInteface) {
+export async function updateTask(id: string, task: TaskInterface) {
   const taskData = await getById(id);
 
   if (taskData) {
