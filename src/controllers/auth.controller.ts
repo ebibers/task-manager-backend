@@ -18,8 +18,7 @@ export function getAuthUser(req: Request, res: Response) {
     id: userData.id,
     firstName: userData.firstName,
     lastName: userData.lastName,
-    username: userData.username,
-    password: userData.password,
+    username: userData.username
   } 
 
   res.send(user);
@@ -36,9 +35,8 @@ export async function login(req: Request, res: Response) {
             id: userData.id,
             firstName: userData.firstName,
             lastName: userData.lastName,
-            username: userData.username,
-            password: userData.password,
-          }          
+            username: userData.username
+          }         
 
           const accessToken = generateAccessToken(user);
 
@@ -94,8 +92,7 @@ function generateAccessToken(userData: any) {
     id: userData.id,
     firstName: userData.firstName,
     lastName: userData.lastName,
-    username: userData.username,
-    password: userData.password,
+    username: userData.username
   } 
 
   if (ACCESS_TOKEN_SECRET) {
