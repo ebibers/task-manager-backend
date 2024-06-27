@@ -26,6 +26,30 @@ export async function getAllUsers(req: Request, res: Response) {
   res.send(users);
 }
 
+export async function createUser(req: Request, res: Response) {
+  const userData = req.body.user;
+
+  if (userData) {
+    try {
+      const newUser = await storeUser(userData);
+
+      const user = {
+        id: newUser._id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        username: newUser.username,
+        password: newUser.password,
+      }
+
+      res.send(user);
+    } catch {
+      res.sendStatus(500);
+    }
+  } else {
+    res.sendStatus(500);
+  }
+}
+
 export async function getUser(req: Request, res: Response) {
   const id = req.params.id;
 

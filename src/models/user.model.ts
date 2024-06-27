@@ -22,7 +22,7 @@ export async function storeUser(user: UserInterface) {
 
   const hashedPassword = await hash(user.password, salt);
 
-  await User.create({
+  return await User.create({
     firstName: user.firstName,
     lastName: user.lastName,
     username: user.username,
