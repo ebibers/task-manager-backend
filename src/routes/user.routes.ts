@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, populateDummyData, getUser } from "../controllers/user.controller.js";
+import { getAllUsers, populateDummyData, getUser, createUser } from "../controllers/user.controller.js";
 import { login, logout, refreshToken, getAuthUser } from "../controllers/auth.controller.js";
 import { authenticateToken } from "../middleware/auth.middleware.js";
 
@@ -12,6 +12,8 @@ routes.get('/auth-user', authenticateToken, getAuthUser);
 routes.get('/', authenticateToken, getAllUsers);
 
 routes.get('/:id', authenticateToken, getUser);
+
+routes.post('/register', createUser);
 
 routes.post('/login', login);
 
