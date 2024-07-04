@@ -1,6 +1,6 @@
 import data from '../../public/assets/users.json' assert { type: "json" };
 import { Request, Response } from 'express';
-import { getAll, storeUser, getById } from '../models/user.model.js';
+import { getAll, storeUser, getById, updateUser } from '../models/user.model.js';
 import mongoose from 'mongoose';
 
 // Populates database with dummy data from json file.
@@ -17,6 +17,7 @@ export async function getAllUsers(req: Request, res: Response) {
 
   const users = userData.map(user => ({
     id: user._id,
+    roles: user.roles,
     firstName: user.firstName,
     lastName: user.lastName,
     username: user.username,
@@ -35,6 +36,7 @@ export async function createUser(req: Request, res: Response) {
 
       const user = {
         id: newUser._id,
+        roles: newUser.roles,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         username: newUser.username,
@@ -59,6 +61,7 @@ export async function getUser(req: Request, res: Response) {
     if (userData) {
       const user = {
         id: userData.id,
+        roles: userData.roles,
         firstName: userData.firstName,
         lastName: userData.lastName,
         username: userData.username,
@@ -69,6 +72,20 @@ export async function getUser(req: Request, res: Response) {
     } else {
       res.sendStatus(404);
     }
+  } else {
+    res.sendStatus(404);
+  }
+}
+
+export async function editUser(req: Request, res: Response) {
+  const id = req.params.id;
+
+  const user = req.body;
+
+  if (mongoose.Types.ObjectId.isValid(id) && user) {
+    await updateUser(id, user);
+    
+    res.send(user);
   } else {
     res.sendStatus(404);
   }

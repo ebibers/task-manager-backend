@@ -1,29 +1,34 @@
 [
   {
+    "roles": ["User"],
     "firstName": "John",
     "lastName": "Johnson",
     "username": "jjon",
     "password": "safepass123"
   },
   {
+    "roles": ["User"],
     "firstName": "Patrick",
     "lastName": "Bateman",
     "username": "americanpsycho",
     "password": "password321"
   },
   {
+    "roles": ["Admin", "User"],
     "firstName": "Michael",
     "lastName": "Jordan",
     "username": "6rings",
     "password": "goatgoat23"
   },
   {
+    "roles": ["User"],
     "firstName": "Sponge",
     "lastName": "Bob",
     "username": "cpatty",
     "password": "garry1234"
   },
   {
+    "roles": ["Manager", "User"],
     "firstName": "Fake",
     "lastName": "Person",
     "username": "fakeusername",
