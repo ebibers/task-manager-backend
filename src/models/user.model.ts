@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { genSalt, hash } from "bcrypt-ts";
 
 export interface UserInterface {
-  roles: Array<string>,
+  roles: string[],
   firstName: string,
   lastName: string,
   username: string,

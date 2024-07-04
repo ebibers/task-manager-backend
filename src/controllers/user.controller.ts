@@ -77,7 +77,7 @@ export async function getUser(req: Request, res: Response) {
   }
 }
 
-export async function editUser(req: Request, res: Response) {
+export async function updateUserData(req: Request, res: Response) {
   const id = req.params.id;
 
   const user = req.body;
