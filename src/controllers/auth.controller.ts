@@ -16,6 +16,7 @@ export function getAuthUser(req: Request, res: Response) {
 
   const user = {
     id: userData.id,
+    roles: userData.roles,
     firstName: userData.firstName,
     lastName: userData.lastName,
     username: userData.username
@@ -33,6 +34,7 @@ export async function login(req: Request, res: Response) {
         if (ACCESS_TOKEN_SECRET && REFRESH_TOKEN_SECRET) {
           const user = {
             id: userData.id,
+            roles: userData.roles,
             firstName: userData.firstName,
             lastName: userData.lastName,
             username: userData.username
@@ -90,6 +92,7 @@ export async function refreshToken(req: Request, res: Response) {
 function generateAccessToken(userData: any) {
   const user = {
     id: userData.id,
+    roles: userData.roles,
     firstName: userData.firstName,
     lastName: userData.lastName,
     username: userData.username
