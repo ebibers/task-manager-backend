@@ -37,6 +37,8 @@ export async function getAll() {
 
 export async function removeTask(id: string) {
   await Task.deleteOne({_id: id});
+
+  return await getAll();
 }
 
 export async function getById(id: string) {
@@ -55,5 +57,7 @@ export async function updateTask(id: string, task: TaskInterface) {
     taskData.assignedTo = task.assignedTo;
 
     await taskData.save();
+
+    return await getAll();
   }
 }

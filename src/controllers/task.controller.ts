@@ -44,9 +44,19 @@ export async function deleteTask(req: Request, res: Response) {
   const id = req.params.id;
 
   if (mongoose.Types.ObjectId.isValid(id)) {
-    await removeTask(id);
+    const taskData = await removeTask(id);
 
-    res.send(true);
+    const newList = taskData.map(task => ({
+      id: task._id,
+      title: task.title,
+      description: task.description,
+      type: task.type,
+      createdOn: task.createdOn,
+      status: task.status,
+      assignedTo: task.assignedTo
+    }));
+
+    res.send(newList);
   } else {
     res.sendStatus(404);
   }
@@ -84,9 +94,21 @@ export async function editTask(req: Request, res: Response) {
   const task = req.body;
 
   if (mongoose.Types.ObjectId.isValid(id) && task) {
-    await updateTask(id, task);
+    const taskData = await updateTask(id, task);
+
+    if (taskData) {
+      const newList = taskData.map(task => ({
+        id: task._id,
+        title: task.title,
+        description: task.description,
+        type: task.type,
+        createdOn: task.createdOn,
+        status: task.status,
+        assignedTo: task.assignedTo
+      }));
     
-    res.send(task);
+      res.send({ task: task, newList: newList });
+    }
   } else {
     res.sendStatus(404);
   }
