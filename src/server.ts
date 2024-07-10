@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { routes as taskRoutes } from './routes/task.routes.js';
 import { routes as userRoutes } from './routes/user.routes.js';
+import { routes as translateRoutes } from './routes/translate.routes.js';
 
 const app: Express = express();
 dotenv.config();
@@ -22,6 +23,8 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/api/tasks', taskRoutes);
 
 app.use('/api/users', userRoutes);
+
+app.use('/api/translate', translateRoutes);
 
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.hg877da.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
 .then(() => {
